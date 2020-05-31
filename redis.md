@@ -97,10 +97,11 @@ To utilize the Predis extension, you should change the `REDIS_CLIENT` environmen
         // Rest of Redis configuration...
     ],
 
-In addition to the default `host`, `port`, `database`, and `password` server configuration options, Predis supports additional [connection parameters](https://github.com/nrk/predis/wiki/Connection-Parameters) that may be defined for each of your Redis servers. To utilize these additional configuration options, add them to your Redis server configuration in the `config/database.php` configuration file:
+In addition to the default `host`, `port`, `database`, and `password` server configuration options, Predis supports additional [connection parameters](https://github.com/nrk/predis/wiki/Connection-Parameters) that may be defined for each of your Redis servers. Useful if you for example want to connect through unix instead of standard tcp. To utilize these additional configuration options, add them to your Redis server configuration in the `config/database.php` configuration file:
 
     'default' => [
-        'host' => env('REDIS_HOST', 'localhost'),
+        'scheme' => env('REDIS_SCHEME', 'unix'),
+        'path' => env('REDIS_PATH', '/tmp/redis'),
         'password' => env('REDIS_PASSWORD', null),
         'port' => env('REDIS_PORT', 6379),
         'database' => 0,
